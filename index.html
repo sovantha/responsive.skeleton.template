@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    <title>Your page title here :)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+    <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+
+<body>
+
+    <header>
+
+    </header>
+    <div class="band navigation">
+        <nav class="container primary">
+            <div class="twelve columns">
+                <ul>
+                    <li><a href="#">Home</a>
+                    </li>
+                    <li><a href="#">Tech</a>
+                    </li>
+                    <li><a href="#">Business</a>
+                    </li>
+                    <li><a href="#">Entertainment</a>
+                        <ul>
+                            <li><a href="#">Film</a>
+                            </li>
+                            <li><a href="#">Gaming</a>
+                            </li>
+                            <li><a href="#">TV</a>
+                            </li>
+                            <li><a href="#">Music</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Social</a>
+                        <ul>
+                            <li><a href="https://facebook.com">Facebook</a></li>
+                            <li><a href="https://twitter.com">Twitter</a></li>
+                            <li><a href="https://plus.google.com">Google Plus</a></li>
+                            <li><a href="https://www.linkedin.com">Linkedin</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Media</a>
+                    </li>
+                    <li><a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+        <div class="row">
+            <div class="one-half column" style="margin-top: 25%">
+                <h4>Basic Page</h4>
+                <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //build dropdown
+            $("<select />").appendTo(".navigation nav div");
+
+            //create default option "Go to..."
+            $("<option />", {
+                "selected": " selected",
+                "value": "",
+                "text": "Go to..."
+            }).appendTo("nav select");
+
+            //populate dropdowns with the first menu items
+            //select parent menu items
+            $(".navigation nav ul > li").not("ul li ul li").each(function () {
+                var el = $(this);
+                //get anchor tags within each parent
+                var parent = $(el).find("a");
+                
+                //append a select option if parent has only one child
+                if(parent.length===1){                                    
+                    $("<option />", {
+                        "value": parent.attr("href"),
+                        "text": parent.text()
+                    }).appendTo("nav select");
+                }else{ //otherwise opputate option group as submenu
+                    var dom = $("<optgroup />",{
+                        "label": parent[0].text
+                    }).appendTo("nav select");
+                                       
+                   for(i=1; i< parent.length; i++){
+                        $("<option />", {
+                            "value": parent[i].href,
+                            "text": parent[i].text
+                        }).appendTo(dom);
+                   }
+                }                    
+            });
+
+            //make responsive dropdown menu actually work
+            $("nav select").change(function() {
+                window.location = $(this).find("option:selected").val();
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+# responsive.skeleton.template
