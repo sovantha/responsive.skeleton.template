@@ -18,6 +18,25 @@ nav.primary ul li {
     margin: 0px;
 }
 
+nav.primary i.caret {
+    color: #ebebeb;
+    margin-left: 5px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    /*for IE6*/
+
+    vertical-align: middle;
+    margin-bottom: 2px;
+    border-top: 4px solid;
+    /*caret size is 4px now*/
+
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    display: inline-block;
+    position: relative;
+}
+
 nav.primary select {
     display: none;
     width: 100%;
@@ -35,7 +54,6 @@ nav.primary ul li a {
     line-height: 49px;
     padding: 0 14px;
     color: #ebebeb;
-    text-transform: uppercase;
     text-decoration: none;
     font-weight: bold;
     letter-spacing: 0.08em;
@@ -79,6 +97,10 @@ nav.primary ul ul li {
     height: auto;
 }
 
+nav.primary ul ul li:last-child{
+    border-bottom: none;
+}
+
 nav.primary ul ul li a {
     display: block;
     line-height: 35px;
@@ -86,10 +108,11 @@ nav.primary ul ul li a {
 }
 
 nav.primary ul li:hover > a {
-    background: #424242;
+    background: #438949;
+    /* background: #424242; */
 }
 
-@media (max-width: 1023px){
+@media (max-width: 1023px) {
     nav.primary select {
         display: block;
     }
@@ -97,21 +120,18 @@ nav.primary ul li:hover > a {
         display: none;
     }
 }
-
 /*low resolution, 480px and below */
 /*
 @media only screen and (max-width: 480px) { 
    
 }
 */
-
 /*medium resoultion, 481px to 1023px */
 /*
 @media only screen and (min-width: 481px) { 
     
 }
 */
-
 /*high resolution, 1024px and above */
 /*
 @media only screen and (min-width: 1024px) { 

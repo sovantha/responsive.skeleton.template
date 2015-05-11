@@ -45,7 +45,8 @@
                     </li>
                     <li><a href="#">Business</a>
                     </li>
-                    <li><a href="#">Entertainment</a>
+                    <li>
+                        <a href="#">Entertainment<i class="caret"></i></a>
                         <ul>
                             <li><a href="#">Film</a>
                             </li>
@@ -57,12 +58,17 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="#">Social</a>
+                    <li>
+                        <a href="#">Social<i class="caret"></i></a>
                         <ul>
-                            <li><a href="https://facebook.com">Facebook</a></li>
-                            <li><a href="https://twitter.com">Twitter</a></li>
-                            <li><a href="https://plus.google.com">Google Plus</a></li>
-                            <li><a href="https://www.linkedin.com">Linkedin</a></li>
+                            <li><a href="https://facebook.com">Facebook</a>
+                            </li>
+                            <li><a href="https://twitter.com">Twitter</a>
+                            </li>
+                            <li><a href="https://plus.google.com">Google Plus</a>
+                            </li>
+                            <li><a href="https://www.linkedin.com">Linkedin</a>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="#">Media</a>
@@ -105,29 +111,29 @@
                 var el = $(this);
                 //get anchor tags within each parent
                 var parent = $(el).find("a");
-                
+
                 //append a select option if parent has only one child
-                if(parent.length===1){                                    
+                if (parent.length === 1) {
                     $("<option />", {
                         "value": parent.attr("href"),
                         "text": parent.text()
                     }).appendTo("nav select");
-                }else{ //otherwise opputate option group as submenu
-                    var dom = $("<optgroup />",{
+                } else { //otherwise opputate option group as submenu
+                    var dom = $("<optgroup />", {
                         "label": parent[0].text
                     }).appendTo("nav select");
-                                       
-                   for(i=1; i< parent.length; i++){
+
+                    for (i = 1; i < parent.length; i++) {
                         $("<option />", {
                             "value": parent[i].href,
                             "text": parent[i].text
                         }).appendTo(dom);
-                   }
-                }                    
+                    }
+                }
             });
 
             //make responsive dropdown menu actually work
-            $("nav select").change(function() {
+            $("nav select").change(function () {
                 window.location = $(this).find("option:selected").val();
             });
         });
